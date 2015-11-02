@@ -1,0 +1,15 @@
+FROM sickp/centos-sshd:7
+
+# Disable root password and login
+
+RUN usermod -p "!" root
+
+# Create user "sickp" and add my public key to authorized_keys
+
+RUN useradd sickp
+ADD https://github.com/sickp.keys /home/sickp/.ssh/authorized_keys
+RUN chown -R sickp:sickp /home/sickp
+
+# Or set an explicit password
+
+RUN echo "sickp:password" | chpasswd

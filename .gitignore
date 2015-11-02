@@ -1,0 +1,2 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+# use a global ignore for editor/OS files: git config --global core.excludesfile '~/.gitignore_global'
