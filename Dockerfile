@@ -11,15 +11,3 @@ ADD runner /runner
 EXPOSE 22
 
 ENTRYPOINT ["/runner"]
-
-### To disable root password/login:
-# RUN usermod -p "!" root
-
-### Create user and set password
-# RUN useradd sickp
-# RUN echo "sickp:sickp" | chpasswd
-
-### Create user and add an authorized key
-# RUN useradd sickp
-# ADD https://github.com/sickp.keys /home/sickp/.ssh/authorized_keys
-# RUN chown -R sickp:sickp /home/sickp/.ssh/
