@@ -28,16 +28,20 @@ $ ssh root@localhost -p 32768 # or $(docker-machine ip default) on Mac OS X / Wi
 
 ## Customization through extension
 
-This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`.
+This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See [examples](examples/).
 
-### Change the root password to something more fun, like "password" or "sunshine"
+### Change root password
+
+Change the root password to something more fun, like "password" or "sunshine":
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
 RUN echo "root:sunshine" | chpasswd
 ```
 
-### Disable the root password completely, and use your SSH key instead
+### Use authorized keys
+
+Disable the root password completely, and use your SSH key instead:
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
@@ -45,17 +49,23 @@ RUN usermod -p "!" root
 COPY identity.pub /root/.ssh/authorized_keys
 ```
 
-### Disable root and create individual user accounts
+### Create multiple users
+
+Disable root and create individual user accounts:
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
-RUN usermod -p "!" root
-
-RUN useradd sickp
-ADD https://github.com/sickp.keys /home/sickp/.ssh/authorized_keys
-RUN chown -R sickp:sickp /home/sickp/.ssh
-
-RUN useradd afrojas
-ADD https://github.com/afrojas.keys /home/afrojas/.ssh/authorized_keys
-RUN chown -R afrojas:afrojas /home/afrojas/.ssh
+RUN \
+  usermod -p "!" root && \
+  useradd sickp && \
+  mkdir ~sickp/.ssh && \
+  curl -o ~sickp/.ssh/authorized_keys https://github.com/sickp.keys && \
+  useradd afrojas && \
+  mkdir ~afrojas/.ssh && \
+  curl -o ~afrojas/.ssh/authorized_keys https://github.com/afrojas.keys
 ```
+
+## History
+
+- 2015-11-03 Setuid ping, collapse layers.
+- 2015-11-02 Initial version.
