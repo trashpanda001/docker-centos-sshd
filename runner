@@ -1,5 +1,7 @@
 #!/bin/bash
 
+host_key_types="RSA ECDSA ED25519"
+
 # autogenerate host keys if not present
 generate_host_key() {
   local key_type=${1}
@@ -12,7 +14,7 @@ generate_host_key() {
     echo "Generated SSH2 ${key_type} host key."
   fi
 }
-for key_type in ${AUTOCREATE_SERVER_KEYS}; do
+for key_type in ${host_key_types}; do
   generate_host_key ${key_type}
 done
 
