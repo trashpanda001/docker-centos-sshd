@@ -1,6 +1,6 @@
 # CentOS SSHD
 
-This is a simple, dockerized SSH service built on top of the [official CentOS 7](https://hub.docker.com/_/centos/) Docker image.
+This is a simple, dockerized SSH service built on top of the [official CentOS 7][centos_docker] Docker image.
 
 The root password is "root".
 
@@ -28,7 +28,7 @@ $ ssh root@localhost -p 32768 # or $(docker-machine ip default) on Mac OS X / Wi
 
 ## Customization through extension
 
-This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See the [examples](examples/) directory.
+This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See the [examples][examples_github] directory.
 
 ### Change root password
 
@@ -69,3 +69,6 @@ RUN \
 
 - 2015-11-03 Setuid ping, collapse layers, .dockerignore.
 - 2015-11-02 Initial version.
+
+[centos_docker]:   https://hub.docker.com/_/centos/
+[examples_github]: https://github.com/sickp/docker-centos-sshd/tree/master/examples
