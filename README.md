@@ -45,7 +45,7 @@ Disable the root password completely, and use your SSH key instead:
 ```dockerfile
 FROM sickp/centos-sshd:latest
 RUN usermod -p "!" root
-ADD ~/.ssh/identity.pub /root/.ssh/authorized_keys
+COPY identity.pub /root/.ssh/authorized_keys
 ```
 
 Disable root and create individual user accounts:
