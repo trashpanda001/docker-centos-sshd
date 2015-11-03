@@ -1,10 +1,9 @@
 FROM sickp/centos-sshd:latest
-RUN usermod -p "!" root
-
-RUN useradd sickp
-ADD https://github.com/sickp.keys /home/sickp/.ssh/authorized_keys
-RUN chown -R sickp:sickp /home/sickp/.ssh
-
-RUN useradd afrojas
-ADD https://github.com/afrojas.keys /home/afrojas/.ssh/authorized_keys
-RUN chown -R afrojas:afrojas /home/afrojas/.ssh
+RUN \
+  usermod -p "!" root && \
+  useradd sickp && \
+  mkdir ~sickp/.ssh && \
+  curl -o ~sickp/.ssh/authorized_keys https://github.com/sickp.keys && \
+  useradd afrojas && \
+  mkdir ~afrojas/.ssh && \
+  curl -o ~afrojas/.ssh/authorized_keys https://github.com/afrojas.keys
