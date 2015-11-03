@@ -1,12 +1,10 @@
 # CentOS SSHD
 
-This is a simple, dockerized SSH service built on top of the [official CentOS 7](https://hub.docker.com/_/centos/)
-Docker image.
+This is a simple, dockerized SSH service built on top of the [official CentOS 7](https://hub.docker.com/_/centos/) Docker image.
 
 The root password is "root".
 
-By default, SSH2 host keys (RSA, ECDSA, and ED25519) are generated when the container is started, if not already
-present.
+By default, SSH2 host keys (RSA, ECDSA, and ED25519) are generated when the container is started, if not already present.
 
 ## Basic usage
 
@@ -30,17 +28,16 @@ $ ssh root@localhost -p 32768 # or $(docker-machine ip default) on Mac OS X / Wi
 
 ## Customization through extension
 
-This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the
-real world. But it is easy to extend via your own `Dockerfile`.
+This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`.
 
-Change the root password to something more fun, like "password" or "sunshine":
+### Change the root password to something more fun, like "password" or "sunshine"
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
 RUN echo "root:sunshine" | chpasswd
 ```
 
-Disable the root password completely, and use your SSH key instead:
+### Disable the root password completely, and use your SSH key instead
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
@@ -48,7 +45,7 @@ RUN usermod -p "!" root
 COPY identity.pub /root/.ssh/authorized_keys
 ```
 
-Disable root and create individual user accounts:
+### Disable root and create individual user accounts
 
 ```dockerfile
 FROM sickp/centos-sshd:latest
