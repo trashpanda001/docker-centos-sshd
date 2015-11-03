@@ -28,7 +28,7 @@ $ ssh root@localhost -p 32768 # or $(docker-machine ip default) on Mac OS X / Wi
 
 ## Customization through extension
 
-This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See [examples](examples/).
+This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See the [examples](examples/) directory.
 
 ### Change root password
 
@@ -67,5 +67,5 @@ RUN \
 
 ## History
 
-- 2015-11-03 Setuid ping, collapse layers.
+- 2015-11-03 Setuid ping, collapse layers, .dockerignore.
 - 2015-11-02 Initial version.
