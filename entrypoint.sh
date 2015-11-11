@@ -23,4 +23,4 @@ touch /run/utmp
 chgrp utmp /run/utmp
 
 # become sshd (-D = do not detach, -e = log to standard error)
-exec /usr/sbin/sshd -D -e
+exec /usr/sbin/sshd -D -e $@

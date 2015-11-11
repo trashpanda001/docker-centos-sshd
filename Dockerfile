@@ -7,6 +7,7 @@ RUN \
   chmod u+s /usr/bin/ping && \
   echo "root:root" | chpasswd
 
-ADD runner /runner
+COPY / /
+
 EXPOSE 22
-ENTRYPOINT ["/runner"]
+ENTRYPOINT ["/entrypoint.sh"]
