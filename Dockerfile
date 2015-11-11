@@ -7,7 +7,8 @@ RUN \
   chmod u+s /usr/bin/ping && \
   echo "root:root" | chpasswd
 
-COPY / /
+COPY /entrypoint.sh /entrypoint.sh
+# NOTE: don't use `COPY / /` since DockerHub automated builds ignore .dockerignore -- doh. @sickp/20151111
 
 EXPOSE 22
 ENTRYPOINT ["/entrypoint.sh"]
