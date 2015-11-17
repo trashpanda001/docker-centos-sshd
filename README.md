@@ -1,6 +1,6 @@
 ### CentOS SSHD
 
-A simple, [dockerized OpenSSH service][centos_sshd] built on top of the [official CentOS][centos] Docker image.
+A simple, [dockerized, OpenSSH service][centos_sshd] built on top of the [official CentOS][centos] Docker image.
 
 The root password is "root".
 
@@ -32,7 +32,7 @@ $ docker run -dP --name=sshd sickp/centos-sshd -o LogLevel=DEBUG
 
 #### Supported tags and `Dockerfile` links
 
-* [`7`][dockerfile_7], `latest` (OpenSSH_6.6.1p1, OpenSSL 1.0.1e-fips 11 Feb 2013)
+* [`7`][dockerfile_7], [`latest`][dockerfile_7] (OpenSSH_6.6.1p1, OpenSSL 1.0.1e-fips 11 Feb 2013)
 
 ### Customize
 
