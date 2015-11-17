@@ -32,13 +32,13 @@ $ docker run -dP --name=sshd sickp/centos-sshd -o LogLevel=DEBUG
 
 #### Supported tags and `Dockerfile` links
 
-* `7`, `latest` ([versions/7/Dockerfile][dockerfile_7])
+* [`7`][dockerfile_7], `latest` (OpenSSH_6.6.1p1, OpenSSL 1.0.1e-fips 11 Feb 2013)
 
-#### Customization through extension
+### Customize
 
-This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See the [examples][examples] directory.
+This image doesn't attempt to be "the one" solution that suits everyone's needs. It's actually pretty useless in the real world. But it is easy to extend via your own `Dockerfile`. See the [examples directory.][examples]
 
-##### Change root password
+#### Change root password
 
 Change the root password to something more fun, like "password" or "sunshine":
 
@@ -47,7 +47,7 @@ FROM sickp/centos-sshd:latest
 RUN echo "root:sunshine" | chpasswd
 ```
 
-##### Use authorized keys
+#### Use authorized keys
 
 Disable the root password completely, and use your SSH key instead:
 
@@ -57,7 +57,7 @@ RUN usermod -p "!" root
 COPY identity.pub /root/.ssh/authorized_keys
 ```
 
-##### Create multiple users
+#### Create multiple users
 
 Disable root and create individual user accounts:
 
@@ -73,7 +73,7 @@ RUN \
   curl -o ~afrojas/.ssh/authorized_keys https://github.com/afrojas.keys
 ```
 
-##### Embed SSH host keys
+#### Embed SSH host keys
 
 Embed SSH host keys directly in your private image, so you can treat your containers like cattle.
 
@@ -87,7 +87,7 @@ RUN \
   curl -o ~sickp/.ssh/authorized_keys https://github.com/sickp.keys
 ```
 
-#### History
+### History
 
 - 2015-11-16 Simplified entrypoint and host key generation. Reorganized.
 - 2015-11-11 Allow passing of arguments to SSHD.
