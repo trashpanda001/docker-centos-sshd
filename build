@@ -1,2 +1,9 @@
 #!/bin/bash
-docker build -t sickp/centos-sshd .
+set -e
+docker build -t sickp/centos-sshd:7 --pull versions/7
+docker tag -f sickp/centos-sshd:7 sickp/centos-sshd:latest
+
+docker build -t sickp/centos-sshd:sunshine examples/01_sunshine
+docker build -t sickp/centos-sshd:authkeys examples/02_authorized_keys
+docker build -t sickp/centos-sshd:multiuser examples/03_multiuser
+docker build -t sickp/centos-sshd:hostkeys examples/04_host_keys
