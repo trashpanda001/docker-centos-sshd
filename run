@@ -1,9 +1,0 @@
-#!/bin/bash
-docker run -dP sickp/centos-sshd
-cd examples/
-for example in *; do
-  cd ${example}
-  docker build -t ${example} .
-  cd ..
-  docker run -dP ${example}
-done
