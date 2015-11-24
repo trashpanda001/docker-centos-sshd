@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+tags="latest 7"
+for tag in ${tags}; do
+  docker push sickp/centos-sshd:${tag}
+done
