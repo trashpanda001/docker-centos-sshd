@@ -1,8 +1,0 @@
-#!/bin/bash
-docker rmi \
-  sickp/centos-sshd:latest \
-  sickp/centos-sshd:7 \
-  sickp/centos-sshd:sunshine \
-  sickp/centos-sshd:authkeys \
-  sickp/centos-sshd:multiuser \
-  sickp/centos-sshd:hostkeys

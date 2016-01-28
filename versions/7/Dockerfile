@@ -1,5 +1,3 @@
-# CentOS 7.x, OpenSSH_6.6.1p1, OpenSSL 1.0.1e-fips 11 Feb 2013
-
 FROM centos:7
 MAINTAINER Adrian B. Danieli "https://github.com/sickp"
 

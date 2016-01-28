@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 
-tags="latest 7"
+repo=sickp/centos-sshd
+latest=7
+tags="${latest} latest"
+
 for tag in ${tags}; do
-  docker push sickp/centos-sshd:${tag}
+  docker push ${repo}:${tag}
+  echo "=> Pushed ${repo}:${tag}"
 done
